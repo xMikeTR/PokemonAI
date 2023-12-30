@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'pokemonBattle.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pdb',        # Your MySQL database name
+        'USER': 'your_user',  # Your MySQL database username
+        'PASSWORD': 'your_password',  # Your MySQL database password
+        'HOST': 'localhost',  # Your MySQL database host
+        'PORT': '3306',       # Your MySQL database port
     }
 }
 
