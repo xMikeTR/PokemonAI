@@ -41,8 +41,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -76,11 +77,12 @@ WSGI_APPLICATION = 'pokemonBattle.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pdb',        # Your MySQL database name
-        'USER': 'your_user',  # Your MySQL database username
-        'PASSWORD': 'your_password',  # Your MySQL database password
+        'NAME': 'pokemondb',        # Your MySQL database name
+        'USER': 'mike',  # Your MySQL database username
+        'PASSWORD': 'bossman',  # Your MySQL database password
         'HOST': 'localhost',  # Your MySQL database host
         'PORT': '3306',       # Your MySQL database port
+        
     }
 }
 
@@ -119,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
