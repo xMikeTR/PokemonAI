@@ -1,12 +1,14 @@
+// App.jsx
 import React from 'react';
-import HelloWorld from './HelloWorld';
+import MainComponent from './MainComponent';
 
-function App() {
+const App = () => {
   return (
     <div>
-      <HelloWorld />
+      <h1>Machine Learning Model Integration</h1>
+      <MainComponent />
     </div>
   );
-}
+};
 
 export default App;

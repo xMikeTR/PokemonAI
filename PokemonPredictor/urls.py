@@ -1,6 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.contrib import admin
 
 urlpatterns = [
-    path('hello-world/', views.hello_world, name='hello_world'),
+    path('api/get/', views.getData),
+    path('api/post/',views.postData),
 ]

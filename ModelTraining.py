@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 import pandas as pd
+import pickle
 
 """ trainingData = {
    'PokemonA_Type': ['Bug','Bug','Bug','Dark','Dark','Dragon','Electric','Electric','Fairy','Fairy','Fairy','Fighting','Fighting','Fighting','Fighting','Fighting','Fire','Fire','Fire','Fire','Flying','Flying','Flying','Ghost','Ghost','Ground','Ground','Ground','Ground','Ground','Ice','Ice','Ice','Ice','Poison','Poison','Psychic','Psychic','Rock','Rock','Rock','Rock','Steel','Steel','Steel','Water','Water','Water','Grass','Grass','Grass'],
@@ -78,3 +79,7 @@ classifier = DecisionTreeClassifier(criterion="entropy", max_depth=3)# Train Dec
 classifier = classifier.fit(X_train,y_train)#Predict the response for test dataset
 y_pred = classifier.predict(X_test)# Model Accuracy, how often is the classifier correct?
 print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+
+with open ('PokemonModel.pkl', 'wb') as file:
+    pickle.dump(pipeline, file)
+
