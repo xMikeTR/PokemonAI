@@ -1,76 +1,91 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import './App.css';
 
 const InputForm = ({ onSubmit }) => {
     const [pokemonAType, setPokemonAType] = useState('');
     const [pokemonBType, setPokemonBType] = useState('');
+    const [selectedPokemonType, setSelectedPokemonType] = useState(null); // Keeps track of which type is currently being selected
 
-    const handlePokemonATypeChange = (e) => {
-        setPokemonAType(e.target.value);
-    };
-
-    const handlePokemonBTypeChange = (e) => {
-        setPokemonBType(e.target.value);
+    const handlePokemonTypeChange = (type) => {
+        if (selectedPokemonType === null) {
+            setPokemonAType(type);
+            setSelectedPokemonType('A');
+        } else {
+            setPokemonBType(type);
+            setSelectedPokemonType(null); // Reset back to null for next selection
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ PokemonA_Type: pokemonAType, PokemonB_Type: pokemonBType });
+        if (pokemonAType !== '' && pokemonBType !== '') {
+            onSubmit({ PokemonA_Type: pokemonAType, PokemonB_Type: pokemonBType });
+            setPokemonAType('');
+            setPokemonBType('');
+
+        }
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
-                Pokemon A Type:
-                <select value={pokemonAType} onChange={handlePokemonATypeChange}>
-                    <option value="">Select Type</option>
-                    <option value="Type1">Normal</option>
-                    <option value="Type2">Fire</option>
-                    <option value="Type2">Water</option>
-                    <option value="Type2">Grass</option>
-                    <option value="Type2">Flying</option>
-                    <option value="Type2">Fighting</option>
-                    <option value="Type2">Poison</option>
-                    <option value="Type2">Electric</option>
-                    <option value="Type2">Ground</option>
-                    <option value="Type2">Rock</option>
-                    <option value="Type2">Psychic</option>
-                    <option value="Type2">Ice</option>
-                    <option value="Type2">Bug</option>
-                    <option value="Type2">Ghost</option>
-                    <option value="Type2">Steel</option>
-                    <option value="Type2">Dragon</option>
-                    <option value="Type2">Dark</option>
-                    <option value="Type2">Fairy</option>
-                </select>
-            </label>
-            <br />
-            <label>
-                Pokemon B Type:
-                <select value={pokemonBType} onChange={handlePokemonBTypeChange}>
-                    <option value="">Select Type</option>
-                    <option value="Type1">Normal</option>
-                    <option value="Type2">Fire</option>
-                    <option value="Type2">Water</option>
-                    <option value="Type2">Grass</option>
-                    <option value="Type2">Flying</option>
-                    <option value="Type2">Fighting</option>
-                    <option value="Type2">Poison</option>
-                    <option value="Type2">Electric</option>
-                    <option value="Type2">Ground</option>
-                    <option value="Type2">Rock</option>
-                    <option value="Type2">Psychic</option>
-                    <option value="Type2">Ice</option>
-                    <option value="Type2">Bug</option>
-                    <option value="Type2">Ghost</option>
-                    <option value="Type2">Steel</option>
-                    <option value="Type2">Dragon</option>
-                    <option value="Type2">Dark</option>
-                    <option value="Type2">Fairy</option>
-                </select>
-            </label>
-            <br />
-            <button type="submit">Predict</button>
+            <div className="wrapper">
+                <button className={`icon bug`} onClick={() => handlePokemonTypeChange('Bug')}>
+                    <img src="src/assets/icons/bug.svg" alt="Bug" />
+                </button>
+                <button className={`icon dark`} onClick={() => handlePokemonTypeChange('Dark')}>
+                    <img src="src/assets/icons/dark.svg" alt="Dark" />
+                </button>
+                <button className={`icon dragon`} onClick={() => handlePokemonTypeChange('Dragon')}>
+                    <img src="src/assets/icons/dragon.svg" alt="Dragon" />
+                </button>
+                <button className={`icon electric`} onClick={() => handlePokemonTypeChange('Electric')}>
+                    <img src="src/assets/icons/electric.svg" alt="Electric" />
+                </button>
+                <button className={`icon fairy`} onClick={() => handlePokemonTypeChange('Fairy')}>
+                    <img src="src/assets/icons/fairy.svg" alt="Fairy" />
+                </button>
+                <button className={`icon fighting`} onClick={() => handlePokemonTypeChange('Fighting')}>
+                    <img src="src/assets/icons/fighting.svg" alt="Fighting" />
+                </button>
+                <button className={`icon fire`} onClick={() => handlePokemonTypeChange('Fire')}>
+                    <img src="src/assets/icons/fire.svg" alt="Fire" />
+                </button>
+                <button className={`icon flying`} onClick={() => handlePokemonTypeChange('Flying')}>
+                    <img src="src/assets/icons/flying.svg" alt="Flying" />
+                </button>
+                <button className={`icon ghost`} onClick={() => handlePokemonTypeChange('Ghost')}>
+                    <img src="src/assets/icons/ghost.svg" alt="Ghost" />
+                </button>
+                <button className={`icon grass`} onClick={() => handlePokemonTypeChange('Grass')}>
+                    <img src="src/assets/icons/grass.svg" alt="Grass" />
+                </button>
+                <button className={`icon ground`} onClick={() => handlePokemonTypeChange('Ground')}>
+                    <img src="src/assets/icons/ground.svg" alt="Ground" />
+                </button>
+                <button className={`icon ice`} onClick={() => handlePokemonTypeChange('Ice')}>
+                    <img src="src/assets/icons/ice.svg" alt="Ice" />
+                </button>
+                <button className={`icon normal`} onClick={() => handlePokemonTypeChange('Normal')}>
+                    <img src="src/assets/icons/normal.svg" alt="Normal" />
+                </button>
+                <button className={`icon poison`} onClick={() => handlePokemonTypeChange('Poison')}>
+                    <img src="src/assets/icons/poison.svg" alt="Poison" />
+                </button>
+                <button className={`icon psychic`} onClick={() => handlePokemonTypeChange('Psychic')}>
+                    <img src="src/assets/icons/psychic.svg" alt="Psychic" />
+                </button>
+                <button className={`icon rock`} onClick={() => handlePokemonTypeChange('Rock')}>
+                    <img src="src/assets/icons/rock.svg" alt="Rock" />
+                </button>
+                <button className={`icon steel`} onClick={() => handlePokemonTypeChange('Steel')}>
+                    <img src="src/assets/icons/steel.svg" alt="Steel" />
+                </button>
+                <button className={`icon water`} onClick={() => handlePokemonTypeChange('Water')}>
+                    <img src="src/assets/icons/water.svg" alt="Water" />
+                </button>
+
+            </div>
+
         </form>
     );
 };

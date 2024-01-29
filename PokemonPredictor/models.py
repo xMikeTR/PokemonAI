@@ -1,6 +1,9 @@
 from django.db import models
 
-# Create your models here.
 class Data(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.CharField(max_length=500)
+    PokemonA_Type = models.CharField(max_length=255)
+    PokemonB_Type = models.CharField(max_length=255)
+    prediction_result = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.PokemonA_Type} vs {self.PokemonB_Type}"

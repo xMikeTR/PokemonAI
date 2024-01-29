@@ -1,42 +1,132 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  background-image: linear-gradient(to right, black 0%, black 50%, grey 50%, grey 100%);
+  min-height: 100vh;
+  color: white;
+
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wrapper {
+  width: 800px;
+  margin: auto auto;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  align-content: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.icon {
+  border-radius: 100%;
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  transition: 200ms all;
 }
 
-.card {
-  padding: 2em;
+.icon:hover {
+  filter: saturate(200%);
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.icon img {
+  height: 60%;
+  width: 60%;
+  margin: 20%;
+}
+
+.bug {
+  background: #92BC2C;
+  box-shadow: 0 0 20px #92BC2C;
+}
+
+.dark {
+  background: #595761;
+  box-shadow: 0 0 20px #595761;
+}
+
+.dragon {
+  background: #0C69C8;
+  box-shadow: 0 0 20px #0C69C8;
+}
+
+.electric {
+  background: #F2D94E;
+  box-shadow: 0 0 20px #F2D94E;
+}
+
+.fire {
+  background: #FBA54C;
+  box-shadow: 0 0 20px #FBA54C;
+}
+
+.fairy {
+  background: #EE90E6;
+  box-shadow: 0 0 20px #EE90E6;
+}
+
+.fighting {
+  background: #D3425F;
+  box-shadow: 0 0 20px #D3425F;
+}
+
+.flying {
+  background: #A1BBEC;
+  box-shadow: 0 0 20px #A1BBEC;
+}
+
+.ghost {
+  background: #5F6DBC;
+  box-shadow: 0 0 20px #5F6DBC;
+}
+
+.grass {
+  background: #5FBD58;
+  box-shadow: 0 0 20px #5FBD58;
+}
+
+.ground {
+  background: #DA7C4D;
+  box-shadow: 0 0 20px #DA7C4D;
+}
+
+.ice {
+  background: #75D0C1;
+  box-shadow: 0 0 20px #75D0C1;
+}
+
+.normal {
+  background: #A0A29F;
+  box-shadow: 0 0 20px #A0A29F;
+}
+
+.poison {
+  background: #B763CF;
+  box-shadow: 0 0 20px #B763CF;
+}
+
+.psychic {
+  background: #FA8581;
+  box-shadow: 0 0 20px #FA8581;
+}
+
+.rock {
+  background: #C9BB8A;
+  box-shadow: 0 0 20px #C9BB8A;
+}
+
+.steel {
+  background: #5695A3;
+  box-shadow: 0 0 20px #5695A3;
+}
+
+.water {
+  background: #539DDF;
+  box-shadow: 0 0 20px #539DDF;
 }

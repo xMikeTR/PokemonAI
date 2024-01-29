@@ -4,6 +4,6 @@ from django.conf import settings
 from django.contrib import admin
 
 urlpatterns = [
-    path('api/get/', views.getData),
+    path('api/get/ ', views.getData),
     path('api/post/',views.postData),
 ]

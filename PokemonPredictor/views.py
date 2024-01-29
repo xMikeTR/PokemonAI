@@ -24,7 +24,9 @@ def postData(request):
         try:
             predictions = model.predict([input_data])
             prediction_result = predictions[0]  # Assuming a single prediction for simplicity
+            print("Predicted result:", prediction_result)
         except Exception as e:
+            print("Error during prediction:", e)
             return Response({'error': str(e)}, status=500)
         serializer.save(prediction_result=prediction_result)
 
