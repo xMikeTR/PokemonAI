@@ -6,6 +6,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder,LabelEncoder,OrdinalEncoder
+from sklearn.model_selection import GridSearchCV, cross_val_score, KFold
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
@@ -78,18 +79,44 @@ plt.xticks(range(len(type_mapping)), list(type_mapping.values()))
 plt.yticks(range(len(type_mapping)), list(type_mapping.values()))
 
 plt.title("Decision Tree - Scatter Plot")
-plt.xlabel("ype")
+plt.xlabel("Type")
 plt.ylabel("Winner")
 plt.legend()
 plt.show()
 
 
 # Create Decision Tree classifer object
-classifier = DecisionTreeClassifier(criterion="entropy", max_depth=5)# Train Decision Tree Classifer
+classifier = DecisionTreeClassifier(max_depth=10, min_samples_split=2, min_samples_leaf=1)# Train Decision Tree Classifer
 classifier = classifier.fit(X_train,y_train)#Predict the response for test dataset
 y_pred = classifier.predict(X_test)# Model Accuracy, how often is the classifier correct?
 print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
 
-""" with open ('PokemonModel.pkl', 'wb') as file:
-    pickle.dump(pipeline, file) """
 
+
+param_grid = {
+    'max_depth':[3,5,7,10],
+    'min_samples_split':[2,5,10],
+    'min_samples_leaf':[1,2,4]
+}
+
+classifier = DecisionTreeClassifier()
+
+grid_search = GridSearchCV(estimator=classifier, param_grid=param_grid, cv=5, scoring='accuracy')
+
+grid_search.fit(X_train, y_train)
+
+best_params = grid_search.best_params_
+print("Best PArameters:", best_params)
+
+k_folds = 5
+cv = KFold(n_splits=k_folds, shuffle=True,random_state=42)
+
+cv_scores = cross_val_score(classifier, X,y, cv=cv, scoring='accuracy')
+
+print("Cross-Validation Scores:", cv_scores)
+
+print("Mean CV Accuracy:",np.mean(cv_scores))
+print("Standard DEviation of CV Accuracy:", np.std(cv_scores))
+
+with open ('PokemonModel.pkl', 'wb') as file:
+    pickle.dump(pipeline, file) 
