@@ -118,5 +118,5 @@ print("Cross-Validation Scores:", cv_scores)
 print("Mean CV Accuracy:",np.mean(cv_scores))
 print("Standard DEviation of CV Accuracy:", np.std(cv_scores))
 
-with open ('PokemonModel.pkl', 'wb') as file:
-    pickle.dump(pipeline, file) 
+""" with open ('PokemonModel.pkl', 'wb') as file:
+    pickle.dump(pipeline, file)  """
