@@ -10,12 +10,9 @@ This project is a web application that allows users to predict the outcome of ba
 - **Responsive Design**: Works seamlessly on both desktop and mobile devices.
 
 ## Demo
+Original: https://youtu.be/xOsW_cxsmb0
 
-Include a link to your live demo here, if available.
-
-## Screenshots
-
-Add some screenshots of your app here to showcase the UI and features.
+Gradio: https://youtu.be/TcwJ0X_wbzk
 
 ## Getting Started
 
